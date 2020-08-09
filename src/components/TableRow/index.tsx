@@ -25,7 +25,7 @@ function TableRow<T extends DataType>({
       {ordenedColumns.map(column => (
         <TableCell
           key={column.name}
-          render={column.element}
+          render={column.render}
           data={data[column.name]}
         />
       ))}

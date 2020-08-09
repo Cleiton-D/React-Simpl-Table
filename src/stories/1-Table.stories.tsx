@@ -18,11 +18,7 @@ const data: DataProps[] = [
 
 export const Table = (): React.ReactElement => (
   <TableComponent<DataProps> data={data} keyExtractor={item => item.key}>
-    <TableColumn name="key" render={item => <p>{item}</p>}>
-      #
-    </TableColumn>
-    <TableColumn name="description" render={item => <p>{item}</p>}>
-      description
-    </TableColumn>
+    <TableColumn name="key">#</TableColumn>
+    <TableColumn name="description">description</TableColumn>
   </TableComponent>
 );

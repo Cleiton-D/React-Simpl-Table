@@ -2,14 +2,14 @@ import React, { createContext, useState, useCallback, useContext } from 'react';
 
 type TableColumn = {
   name: string;
-  element(item: any): React.ReactElement;
+  render(item: any): React.ReactElement;
   index: number;
 };
 
 type TableContextData = {
   registerColumn(column: TableColumn): void;
   getColumnByName(name: string): TableColumn | undefined;
-  updateColumnIndex(data: Omit<TableColumn, 'element'>): void;
+  updateColumnIndex(data: Omit<TableColumn, 'render'>): void;
   getAllColumns(): TableColumn[];
 };
 
@@ -18,12 +18,9 @@ const TableContext = createContext<TableContextData>({} as TableContextData);
 const TableContextProvider: React.FC = ({ children }) => {
   const [columns, setColumns] = useState<TableColumn[]>([]);
 
-  const registerColumn = useCallback(
-    ({ name, element, index }: TableColumn) => {
-      setColumns(oldColumns => [...oldColumns, { name, element, index }]);
-    },
-    [],
-  );
+  const registerColumn = useCallback(({ name, render, index }: TableColumn) => {
+    setColumns(oldColumns => [...oldColumns, { name, render, index }]);
+  }, []);
 
   const getColumnByName = useCallback(
     (name: string) => columns.find(item => item.name === name),
@@ -31,7 +28,7 @@ const TableContextProvider: React.FC = ({ children }) => {
   );
 
   const updateColumnIndex = useCallback(
-    ({ name, index }: Omit<TableColumn, 'element'>) => {
+    ({ name, index }: Omit<TableColumn, 'render'>) => {
       setColumns(oldColumns =>
         oldColumns.map(column => {
           if (column.name !== name) return column;
