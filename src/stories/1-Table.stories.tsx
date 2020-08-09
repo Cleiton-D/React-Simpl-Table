@@ -1,5 +1,5 @@
 import React from 'react';
-import TableComponent from '..';
+import TableComponent, { TableColumn } from '..';
 
 export default {
   title: 'Table',
@@ -18,7 +18,11 @@ const data: DataProps[] = [
 
 export const Table = (): React.ReactElement => (
   <TableComponent<DataProps> data={data} keyExtractor={item => item.key}>
-    <th>#</th>
-    <th>Description</th>
+    <TableColumn name="key" render={item => <p>{item}</p>}>
+      #
+    </TableColumn>
+    <TableColumn name="description" render={item => <p>{item}</p>}>
+      description
+    </TableColumn>
   </TableComponent>
 );

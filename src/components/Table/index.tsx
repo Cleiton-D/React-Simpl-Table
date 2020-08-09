@@ -9,7 +9,11 @@ interface TableProps<T> extends Props<void> {
   keyExtractor(item: T): string;
 }
 
-function Table<T>({ children, data }: TableProps<T>): React.ReactElement {
+function Table<T>({
+  children,
+  data,
+  keyExtractor,
+}: TableProps<T>): React.ReactElement {
   return (
     <TableContextProvider>
       <table>
@@ -18,7 +22,7 @@ function Table<T>({ children, data }: TableProps<T>): React.ReactElement {
         </thead>
         <tbody>
           {data.map(item => (
-            <TableRow<T> data={item} />
+            <TableRow<T> key={keyExtractor(item)} data={item} />
           ))}
         </tbody>
       </table>

@@ -23,7 +23,11 @@ function TableRow<T extends DataType>({
   return (
     <tr>
       {ordenedColumns.map(column => (
-        <TableCell key="df" render={column.element} data={data[column.name]} />
+        <TableCell
+          key={column.name}
+          render={column.element}
+          data={data[column.name]}
+        />
       ))}
     </tr>
   );
