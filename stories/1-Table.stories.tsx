@@ -1,5 +1,5 @@
 import React from 'react';
-import Table, { TableColumn } from '..';
+import Table, { TableColumn } from '../src/index';
 
 export default {
   title: 'Table',
