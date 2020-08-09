@@ -1,9 +1,9 @@
 import React from 'react';
-import TableComponent, { TableColumn } from '..';
+import Table, { TableColumn } from '..';
 
 export default {
   title: 'Table',
-  component: TableComponent,
+  component: Table,
 };
 
 type DataProps = {
@@ -16,9 +16,21 @@ const data: DataProps[] = [
   { key: 'item2', description: 'Description for the item two' },
 ];
 
-export const Table = (): React.ReactElement => (
-  <TableComponent<DataProps> data={data} keyExtractor={item => item.key}>
+export const BasicTable: React.FC = () => (
+  <Table<DataProps> data={data} keyExtractor={item => item.key}>
     <TableColumn name="key">#</TableColumn>
     <TableColumn name="description">description</TableColumn>
-  </TableComponent>
+  </Table>
+);
+
+export const WithCustomRender: React.FC = () => (
+  <Table<DataProps> data={data} keyExtractor={item => item.key}>
+    <TableColumn name="key">#</TableColumn>
+    <TableColumn
+      name="description"
+      render={item => <strong style={{ color: 'red' }}>{item}</strong>}
+    >
+      description
+    </TableColumn>
+  </Table>
 );
