@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useCallback,
 } from 'react';
-import { useTable } from 'hooks/table';
+import { useTable } from '../../hooks/table';
 
 type TableColumnProps = {
   name: string;

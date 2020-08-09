@@ -1,6 +1,6 @@
 import React, { Props } from 'react';
 
-import TableRow from 'components/TableRow';
+import TableRow from '../TableRow';
 
 import { TableContextProvider } from '../../hooks/table';
 

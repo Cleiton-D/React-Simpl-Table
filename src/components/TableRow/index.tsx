@@ -1,6 +1,6 @@
 import React, { Props, useMemo } from 'react';
-import { useTable } from 'hooks/table';
-import TableCell from 'components/TableCell';
+import { useTable } from '../../hooks/table';
+import TableCell from '../TableCell';
 
 interface TableRowProps<T> extends Props<void> {
   data: T;
