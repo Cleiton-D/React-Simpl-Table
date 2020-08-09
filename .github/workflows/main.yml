@@ -1,0 +1,24 @@
+
+name: Storybook
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      
+    - name: Build the storybook
+    - run: yarn install
+    - run: yarn build-storybook
+      
+    - name: Deploy to GitHub pages
+      uses: JamesIves/github-pages-deploy-action@3.5.9
+      with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: storybook-pages # The branch the action should deploy to.
+          FOLDER: storybook-static # The folder the action should deploy.
