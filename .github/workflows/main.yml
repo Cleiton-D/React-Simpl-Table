@@ -9,11 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
       
     - name: Build the storybook
-    - run: yarn install
-    - run: yarn build-storybook
+      uses: actions/setup-node@v1
+    - run: |
+        yarn install
+        yarn build-storybook
       
     - name: Deploy to GitHub pages
       uses: JamesIves/github-pages-deploy-action@3.5.9
