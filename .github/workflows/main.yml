@@ -21,7 +21,7 @@ jobs:
       run: yarn build-storybook
     
     - name: Deploy to NPM
-    - uses: JS-DevTools/npm-publish@v1
+      uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
         
