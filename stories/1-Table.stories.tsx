@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Table, { TableColumn } from '../src/index';
 
 export default {
@@ -18,17 +19,17 @@ const data: DataProps[] = [
 
 export const BasicTable: React.FC = () => (
   <Table<DataProps> data={data} keyExtractor={item => item.key}>
-    <TableColumn name="key">#</TableColumn>
+    <TableColumn name="key">key</TableColumn>
     <TableColumn name="description">description</TableColumn>
   </Table>
 );
 
-export const WithCustomRender: React.FC = () => (
+export const withCustomRender: React.FC = () => (
   <Table<DataProps> data={data} keyExtractor={item => item.key}>
-    <TableColumn name="key">#</TableColumn>
+    <TableColumn name="key">Key</TableColumn>
     <TableColumn
       name="description"
-      render={item => <strong style={{ color: 'red' }}>{item}</strong>}
+      render={item => <div>this is a custom render of {item}</div>}
     >
       description
     </TableColumn>
