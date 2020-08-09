@@ -5,20 +5,33 @@ on:
     branches: [ master ]
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
       
-    - name: Build the storybook
-      uses: actions/setup-node@v1
-    - run: |
-        yarn install
-        yarn build-storybook
+    - name: install dependencies
+      run: yarn install
       
-    - name: Deploy to GitHub pages
-      uses: JamesIves/github-pages-deploy-action@3.5.9
-      with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: storybook-pages # The branch the action should deploy to.
-          FOLDER: storybook-static # The folder the action should deploy.
+    - name: build module
+      run: yarn build
+    
+    - name: build storybook
+      run: yarn build-storybook
+      
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v1
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+
+
+#     - name: Deploy to GitHub pages
+#       uses: JamesIves/github-pages-deploy-action@3.5.9
+#       with:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           BRANCH: storybook-pages
+#           FOLDER: storybook-static
