@@ -1,5 +1,7 @@
 import React, { Props } from 'react';
 
+import TableRow from 'components/TableRow';
+
 import { TableContextProvider } from '../../hooks/table';
 
 interface TableProps<T> extends Props<void> {
@@ -14,7 +16,11 @@ function Table<T>({ children, data }: TableProps<T>): React.ReactElement {
         <thead>
           <tr>{children}</tr>
         </thead>
-        <tbody />
+        <tbody>
+          {data.map(item => (
+            <TableRow<T> data={item} />
+          ))}
+        </tbody>
       </table>
     </TableContextProvider>
   );
