@@ -12,6 +12,7 @@
     "dist"
   ],
   "dependencies": {
+    "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "scripts": {
@@ -21,7 +22,8 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
-    "react": "^16.13.1"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
