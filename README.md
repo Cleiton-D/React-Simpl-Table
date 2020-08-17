@@ -35,6 +35,6 @@ const App: React.FC = () => (
 );
 ```
 
-More examples in https://cleiton-d.github.io/React-Simple-Table
+More examples in https://cleiton-d.github.io/React-Simpl-Table
 
 By Cleiton Dione Ahnerth Kiper: [LinkedIn](https://www.linkedin.com/in/cleitonkiper)
