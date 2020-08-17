@@ -4,19 +4,22 @@ import React, {
   useLayoutEffect,
   useEffect,
   useCallback,
+  Props,
 } from 'react';
 import { useTable } from '../../hooks/table';
 
-type TableColumnProps = {
+interface TableColumnProps<T> extends Props<void> {
   name: string;
-  render?(data: any): React.ReactElement;
-};
+  title?: string;
+  render?(data: T): React.ReactElement;
+}
 
-const TableColumn: React.FC<TableColumnProps> = ({
+function TableColumn<T>({
   children,
   name,
+  title,
   render: customRender,
-}) => {
+}: TableColumnProps<T>): React.ReactElement {
   const [registered, setRegistered] = useState(false);
   const [index, setIndex] = useState(-1);
 
@@ -48,7 +51,7 @@ const TableColumn: React.FC<TableColumnProps> = ({
     }
   }, [index, name, render, registerColumn, updateColumnIndex, registered]);
 
-  return <th ref={columnRef}>{children}</th>;
-};
+  return <th ref={columnRef}>{title || children}</th>;
+}
 
 export default TableColumn;

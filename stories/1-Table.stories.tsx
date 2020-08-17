@@ -35,3 +35,37 @@ export const withCustomRender: React.FC = () => (
     </TableColumn>
   </Table>
 );
+
+type Detail = {
+  id: string;
+  text: string;
+};
+
+type DataProps2 = {
+  key: string;
+  detail: Detail;
+};
+
+const data2: DataProps2[] = [
+  {
+    key: 'item1',
+    detail: { id: 'detailId', text: 'Description for the item one' },
+  },
+  {
+    key: 'item2',
+    detail: { id: 'detailId 2', text: 'Description for the item two' },
+  },
+];
+
+export const withColumnTyped: React.FC = () => (
+  <Table<DataProps> data={data} keyExtractor={item => item.key}>
+    <TableColumn name="key">Key</TableColumn>
+
+    <TableColumn<Detail>
+      name="detail"
+      render={item => <div>this is a custom render of {item.text}</div>}
+    >
+      Detail
+    </TableColumn>
+  </Table>
+);
