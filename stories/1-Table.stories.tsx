@@ -58,7 +58,7 @@ const data2: DataProps2[] = [
 ];
 
 export const withColumnTyped: React.FC = () => (
-  <Table<DataProps> data={data} keyExtractor={item => item.key}>
+  <Table<DataProps2> data={data2} keyExtractor={item => item.key}>
     <TableColumn name="key">Key</TableColumn>
 
     <TableColumn<Detail>
